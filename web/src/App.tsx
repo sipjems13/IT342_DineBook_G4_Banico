@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './App.css'
 import { supabase, isSupabaseConfigured } from './supabaseClient'
 
 function App() {
+  const navigate = useNavigate()
   const [isLogin, setIsLogin] = useState(true)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -10,6 +12,25 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [isError, setIsError] = useState(false)
+  const [checkingAuth, setCheckingAuth] = useState(true)
+
+  // Check if user is already logged in
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (session) {
+          navigate('/dashboard')
+        }
+      } catch (err) {
+        console.error('Error checking session:', err)
+      } finally {
+        setCheckingAuth(false)
+      }
+    }
+
+    checkSession()
+  }, [navigate])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -38,7 +59,7 @@ function App() {
         } else {
           setMessage('Login successful! Redirecting...')
           setTimeout(() => {
-            window.location.href = '/dashboard'
+            navigate('/dashboard')
           }, 1500)
         }
       } else {
@@ -81,9 +102,60 @@ function App() {
     }
   }
 
+  const handleGoogleLogin = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/`,
+      },
+    })
+
+    if (error) {
+      setIsError(true)
+      setMessage(error.message)
+    }
+  }
+
+  if (checkingAuth) {
+    return (
+      <div className="auth-container">
+        <div className="auth-box">
+          <div style={{ textAlign: 'center', padding: '40px 20px' }}>
+            <p>Checking authentication...</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="auth-container">
       <div className="auth-box">
+        <style>{`
+          .auth-header {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+            margin-top: -100px;
+            padding-top: 40px;
+            padding-bottom: 20px;
+          }
+          .auth-header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+          }
+          .auth-header p {
+            font-size: 14px;
+            opacity: 0.95;
+            margin: 0;
+          }
+        `}</style>
+        <div className="auth-header">
+          <h1>🍽️ DineBook</h1>
+          <p>Reserve your perfect dining experience</p>
+        </div>
         <div className="auth-tabs">
           <button
             className={`tab ${isLogin ? 'active' : ''}`}
@@ -112,42 +184,45 @@ function App() {
 
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
-            <label htmlFor="email">EMAIL ADDRESS</label>
+            <label htmlFor="email">📧 Email Address</label>
             <input
               type="email"
               id="email"
-              placeholder="user@example.com"
+              placeholder="your.email@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
               disabled={loading}
+              autoComplete="email"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">PASSWORD</label>
+            <label htmlFor="password">🔐 Password</label>
             <input
               type="password"
               id="password"
-              placeholder="••••••••"
+              placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               disabled={loading}
+              autoComplete={isLogin ? 'current-password' : 'new-password'}
             />
           </div>
 
           {!isLogin && (
             <div className="form-group">
-              <label htmlFor="confirmPassword">CONFIRM PASSWORD</label>
+              <label htmlFor="confirmPassword"> Confirm Password</label>
               <input
                 type="password"
                 id="confirmPassword"
-                placeholder="••••••••"
+                placeholder="Re-enter your password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
                 disabled={loading}
+                autoComplete="new-password"
               />
             </div>
           )}
@@ -160,8 +235,13 @@ function App() {
             <span>OR</span>
           </div>
 
-          <button type="button" className="google-btn" disabled={loading}>
-            Login with Google
+          <button 
+            type="button" 
+            className="google-btn" 
+            disabled={loading}
+            onClick={handleGoogleLogin}
+          >
+          Sign in with Google
           </button>
         </form>
 
