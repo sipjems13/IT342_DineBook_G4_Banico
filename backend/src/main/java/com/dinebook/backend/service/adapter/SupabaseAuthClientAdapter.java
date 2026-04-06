@@ -1,17 +1,21 @@
-package com.dinebook.backend.service;
+package com.dinebook.backend.service.adapter;
 
-import com.dinebook.backend.dto.*;
+import com.dinebook.backend.dto.LoginRequest;
+import com.dinebook.backend.dto.RegisterRequest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
-import org.springframework.stereotype.Service;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Map;
 
-@Service
-public class AuthService {
+@Component
+public class SupabaseAuthClientAdapter implements AuthClient {
 
     @Value("${supabase.url}")
     private String supabaseUrl;
@@ -21,13 +25,13 @@ public class AuthService {
 
     private final RestTemplate restTemplate;
 
-    public AuthService(RestTemplate restTemplate) {
+    public SupabaseAuthClientAdapter(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public ResponseEntity<?> register(RegisterRequest request) {
+    @Override
+    public ResponseEntity<?> registerUser(RegisterRequest request) {
         String url = supabaseUrl + "/auth/v1/signup";
-
         HttpHeaders headers = createHeaders();
         HttpEntity<RegisterRequest> entity = new HttpEntity<>(request, headers);
 
@@ -41,9 +45,9 @@ public class AuthService {
         }
     }
 
-    public ResponseEntity<?> login(LoginRequest request) {
+    @Override
+    public ResponseEntity<?> authenticateUser(LoginRequest request) {
         String url = supabaseUrl + "/auth/v1/token?grant_type=password";
-
         HttpHeaders headers = createHeaders();
         HttpEntity<LoginRequest> entity = new HttpEntity<>(request, headers);
 
