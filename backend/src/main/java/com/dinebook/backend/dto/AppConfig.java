@@ -1,4 +1,4 @@
-package com.dinebook.backend.config;
+package com.dinebook.backend.dto;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
