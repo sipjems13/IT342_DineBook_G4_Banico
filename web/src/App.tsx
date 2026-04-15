@@ -66,15 +66,41 @@ function App() {
           setIsError(true)
           setMessage(error.message)
         } else {
-          setMessage('Registration successful! Please check your email to confirm.')
-          setEmail('')
-          setPassword('')
-          setConfirmPassword('')
+          setMessage('Registration successful! Redirecting...')
+          setTimeout(() => {
+            window.location.href = '/dashboard'
+          }, 1500)
         }
       }
     } catch (err) {
       setIsError(true)
       setMessage('An unexpected error occurred')
+      console.error(err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleGoogleLogin = async () => {
+    setLoading(true)
+    setMessage('')
+    setIsError(false)
+
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin + '/dashboard',
+        },
+      })
+
+      if (error) {
+        setIsError(true)
+        setMessage(error.message)
+      }
+    } catch (err) {
+      setIsError(true)
+      setMessage('An unexpected error occurred during Google Login')
       console.error(err)
     } finally {
       setLoading(false)
@@ -160,7 +186,12 @@ function App() {
             <span>OR</span>
           </div>
 
-          <button type="button" className="google-btn" disabled={loading}>
+          <button 
+            type="button" 
+            className="google-btn" 
+            disabled={loading}
+            onClick={handleGoogleLogin}
+          >
             Login with Google
           </button>
         </form>

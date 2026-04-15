@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DineBook" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#C0C0C0</item>
+        <item name="colorPrimaryVariant">#999999</item>
+        <item name="colorOnPrimary">#333333</item>
+        <item name="colorSecondary">#E0E0E0</item>
+        <item name="colorOnSecondary">#333333</item>
+        <item name="android:windowBackground">@color/background_gray</item>
+        <item name="android:statusBarColor">#E0E0E0</item>
+    </style>
+</resources>

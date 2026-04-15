@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">DineBook</string>
+
+    <!-- Auth tabs -->
+    <string name="tab_login">Login</string>
+    <string name="tab_register">Register</string>
+
+    <!-- Form labels (uppercase like web) -->
+    <string name="label_email">EMAIL ADDRESS</string>
+    <string name="label_password">PASSWORD</string>
+    <string name="label_confirm_password">CONFIRM PASSWORD</string>
+    <string name="label_full_name">FULL NAME</string>
+
+    <!-- Hints -->
+    <string name="hint_email">user@example.com</string>
+    <string name="hint_password">••••••••</string>
+    <string name="hint_name">Enter your full name</string>
+
+    <!-- Buttons -->
+    <string name="action_login">Login</string>
+    <string name="action_register">Register</string>
+    <string name="action_processing">Processing…</string>
+    <string name="action_google_login">Login with Google</string>
+
+    <!-- Divider -->
+    <string name="divider_or">OR</string>
+
+    <!-- Navigation -->
+    <string name="action_go_to_register">Don\'t have an account? Register</string>
+    <string name="action_go_to_login">Already have an account? Login</string>
+
+    <!-- Messages -->
+    <string name="error_invalid_email">Invalid email format</string>
+    <string name="error_invalid_password">Password must be at least 6 characters</string>
+    <string name="error_empty_fields">All fields are required</string>
+    <string name="error_login_failed">Login failed. Please check your credentials.</string>
+    <string name="error_register_failed">Registration failed.</string>
+    <string name="error_passwords_mismatch">Passwords do not match</string>
+    <string name="success_register">Registration successful! Redirecting…</string>
+    <string name="success_login">Login successful! Redirecting…</string>
+    <string name="welcome_message">Welcome to DineBook!</string>
+
+    <!-- Legacy (kept for compatibility) -->
+    <string name="title_login">Login to DineBook</string>
+    <string name="title_register">Create an Account</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_name">Full Name</string>
+    <string name="action_sign_in">Sign In</string>
+</resources>
