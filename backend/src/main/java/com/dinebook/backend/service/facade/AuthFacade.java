@@ -7,6 +7,7 @@ import com.dinebook.backend.service.notification.Notification;
 import com.dinebook.backend.service.notification.NotificationFactory;
 import com.dinebook.backend.service.observer.UserRegisteredEvent;
 import com.dinebook.backend.service.strategy.ValidationStrategy;
+import com.dinebook.backend.service.UserRoleService;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,18 @@ public class AuthFacade {
     private final List<ValidationStrategy> validationStrategies;
     private final NotificationFactory notificationFactory;
     private final ApplicationEventPublisher eventPublisher;
+    private final UserRoleService userRoleService;
 
     public AuthFacade(AuthClient authClient,
                       List<ValidationStrategy> validationStrategies,
                       NotificationFactory notificationFactory,
-                      ApplicationEventPublisher eventPublisher) {
+                      ApplicationEventPublisher eventPublisher,
+                      UserRoleService userRoleService) {
         this.authClient = authClient;
         this.validationStrategies = validationStrategies;
         this.notificationFactory = notificationFactory;
         this.eventPublisher = eventPublisher;
+        this.userRoleService = userRoleService;
     }
 
     public ResponseEntity<?> register(RegisterRequest request) {
@@ -41,6 +45,7 @@ public class AuthFacade {
         ResponseEntity<?> response = authClient.registerUser(request);
 
         if (response.getStatusCode().is2xxSuccessful()) {
+            userRoleService.ensureUser(request.email());
             // Observer Pattern: Publish event so other components can react
             eventPublisher.publishEvent(new UserRegisteredEvent(this, request.email()));
 
