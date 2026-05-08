@@ -1,11 +1,34 @@
+/* Global theme tokens (used by auth + dashboard) */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --bg: #0b1220;
+  --bg-soft: #0f172a;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-2: rgba(255, 255, 255, 0.86);
+  --stroke: rgba(15, 23, 42, 0.10);
+  --stroke-2: rgba(15, 23, 42, 0.14);
+  --text: #0f172a;
+  --muted: rgba(15, 23, 42, 0.62);
+
+  --primary: #6d5efc;
+  --primary-2: #2dd4bf;
+  --primary-3: #60a5fa;
+
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+
+  --shadow-1: 0 16px 40px rgba(2, 6, 23, 0.18);
+  --shadow-2: 0 10px 24px rgba(2, 6, 23, 0.12);
+  --radius: 14px;
+  --radius-sm: 10px;
 }
 
 * {
@@ -14,27 +37,24 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+html, body, #root { width: 100%; height: 100%; margin: 0; padding: 0; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
+  background:
+    radial-gradient(1200px 600px at 10% 0%, rgba(109, 94, 252, 0.16), transparent 60%),
+    radial-gradient(900px 520px at 90% 10%, rgba(45, 212, 191, 0.12), transparent 60%),
+    linear-gradient(180deg, #f8fafc 0%, #f5f7ff 40%, #f8fafc 100%);
+  color: var(--text);
 }
 
 a {
   font-weight: 500;
-  color: #0066cc;
+  color: var(--primary);
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #0052a3;
+  color: #5547ff;
 }
 
 button {
@@ -43,10 +63,83 @@ button {
   transition: all 0.25s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+::selection {
+  background: rgba(109, 94, 252, 0.22);
+  color: #0f172a;
 }
+
+/* Shared UI primitives */
+.ui-card {
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-2);
+}
+
+.ui-input,
+.ui-select,
+.ui-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text);
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.ui-input:focus,
+.ui-select:focus,
+.ui-textarea:focus {
+  border-color: rgba(109, 94, 252, 0.75);
+  box-shadow: 0 0 0 4px rgba(109, 94, 252, 0.14);
+}
+
+.ui-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+}
+
+.ui-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-2);
+}
+
+.ui-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.ui-btn.primary {
+  border: none;
+  color: white;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+}
+
+.ui-btn.danger {
+  border: none;
+  color: white;
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+}
+
+.ui-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.9);
+}
+
 

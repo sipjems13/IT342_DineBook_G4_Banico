@@ -4,23 +4,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 1rem;
+  background:
+    radial-gradient(1200px 600px at 10% 0%, rgba(109, 94, 252, 0.45), transparent 55%),
+    radial-gradient(900px 500px at 85% 10%, rgba(45, 212, 191, 0.32), transparent 55%),
+    linear-gradient(180deg, #070b14 0%, #0b1220 55%, #070b14 100%);
+  padding: 1.25rem;
 }
 
 .auth-box {
-  background: white;
-  border-radius: 12px;
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 18px;
+  padding: 1.75rem 1.75rem 1.25rem;
   width: 100%;
   max-width: 400px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(10px);
 }
 
 .auth-tabs {
   display: flex;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.12);
 }
 
 .tab {
@@ -31,14 +36,15 @@
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #6b7280;
+  color: rgba(15, 23, 42, 0.62);
   transition: all 0.2s;
 }
 
 .tab.active {
-  color: #667eea;
-  border-bottom: 2px solid #667eea;
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
   margin-bottom: -2px;
+  font-weight: 800;
 }
 
 .message {
@@ -49,15 +55,15 @@
 }
 
 .message.error {
-  background: #fef2f2;
-  color: #dc2626;
-  border: 1px solid #fecaca;
+  background: rgba(220, 38, 38, 0.10);
+  color: #991b1b;
+  border: 1px solid rgba(220, 38, 38, 0.20);
 }
 
 .message.success {
-  background: #f0fdf4;
-  color: #16a34a;
-  border: 1px solid #bbf7d0;
+  background: rgba(22, 163, 74, 0.10);
+  color: #166534;
+  border: 1px solid rgba(22, 163, 74, 0.20);
 }
 
 .auth-form {
@@ -80,25 +86,26 @@
 }
 
 .form-group input {
-  padding: 0.625rem 0.875rem;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-radius: 12px;
   font-size: 0.9rem;
   transition: border-color 0.2s;
+  background: rgba(255, 255, 255, 0.96);
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: rgba(109, 94, 252, 0.75);
+  box-shadow: 0 0 0 4px rgba(109, 94, 252, 0.14);
 }
 
 .submit-btn {
-  padding: 0.75rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0.8rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -114,7 +121,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: #9ca3af;
+  color: rgba(15, 23, 42, 0.5);
   font-size: 0.8rem;
 }
 
@@ -123,15 +130,15 @@
   content: '';
   flex: 1;
   height: 1px;
-  background: #e5e7eb;
+  background: rgba(15, 23, 42, 0.12);
 }
 
 .google-btn {
   padding: 0.75rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.96);
   color: #374151;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  border-radius: 12px;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
@@ -139,7 +146,7 @@
 }
 
 .google-btn:hover:not(:disabled) {
-  background: #f9fafb;
+  background: rgba(15, 23, 42, 0.04);
 }
 
 .back-link {
@@ -148,7 +155,11 @@
 }
 
 .back-link a {
-  color: #667eea;
+  color: rgba(15, 23, 42, 0.72);
   text-decoration: none;
   font-size: 0.875rem;
+}
+
+.back-link a:hover {
+  color: var(--primary);
 }
