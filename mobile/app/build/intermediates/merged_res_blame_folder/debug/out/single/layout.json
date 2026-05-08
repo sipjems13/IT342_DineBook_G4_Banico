@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-mergeDebugResources-32:\\layout\\activity_register.xml",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-mergeDebugResources-32:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "com.dinebook.mobile.app-mergeDebugResources-32:/layout/activity_login.xml",
+        "source": "com.dinebook.mobile.app-main-35:/layout/activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-mergeDebugResources-32:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\layout\\activity_main.xml"
+    }
+]

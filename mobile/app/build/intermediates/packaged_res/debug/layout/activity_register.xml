@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray"
+    android:padding="20dp">
+
+    <!-- Centered auth card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/bg_auth_card"
+        android:elevation="10dp">
+
+        <!-- Tabs: Login | Register -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tabLogin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tab_login"
+                android:textSize="14sp"
+                android:textColor="@color/tab_text"
+                android:gravity="center"
+                android:padding="14dp"
+                android:background="@color/tab_inactive" />
+
+            <TextView
+                android:id="@+id/tabRegister"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tab_register"
+                android:textSize="14sp"
+                android:textColor="@color/tab_text"
+                android:gravity="center"
+                android:padding="14dp"
+                android:background="@color/tab_active"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Thin divider under tabs -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/tab_divider" />
+
+        <!-- Message area (success/error) -->
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:padding="12dp"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="16dp" />
+
+        <!-- Scrollable form content -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="28dp">
+
+                <!-- Full Name field -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_full_name"
+                    android:textSize="11sp"
+                    android:textColor="@color/label_text"
+                    android:layout_marginBottom="6dp" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_name"
+                    android:textColorHint="@color/text_hint"
+                    android:inputType="textPersonName"
+                    android:background="@drawable/bg_input_selector"
+                    android:textSize="14sp"
+                    android:minHeight="48dp"
+                    android:layout_marginBottom="18dp" />
+
+                <!-- Email field -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_email"
+                    android:textSize="11sp"
+                    android:textColor="@color/label_text"
+                    android:layout_marginBottom="6dp" />
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_email"
+                    android:textColorHint="@color/text_hint"
+                    android:inputType="textEmailAddress"
+                    android:background="@drawable/bg_input_selector"
+                    android:textSize="14sp"
+                    android:minHeight="48dp"
+                    android:layout_marginBottom="18dp" />
+
+                <!-- Password field -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_password"
+                    android:textSize="11sp"
+                    android:textColor="@color/label_text"
+                    android:layout_marginBottom="6dp" />
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_password"
+                    android:textColorHint="@color/text_hint"
+                    android:inputType="textPassword"
+                    android:background="@drawable/bg_input_selector"
+                    android:textSize="14sp"
+                    android:minHeight="48dp"
+                    android:layout_marginBottom="18dp" />
+
+                <!-- Confirm Password field -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_confirm_password"
+                    android:textSize="11sp"
+                    android:textColor="@color/label_text"
+                    android:layout_marginBottom="6dp" />
+
+                <EditText
+                    android:id="@+id/etConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_password"
+                    android:textColorHint="@color/text_hint"
+                    android:inputType="textPassword"
+                    android:background="@drawable/bg_input_selector"
+                    android:textSize="14sp"
+                    android:minHeight="48dp"
+                    android:layout_marginBottom="18dp" />
+
+                <!-- Submit button -->
+                <Button
+                    android:id="@+id/btnRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/action_register"
+                    android:background="@drawable/bg_button_submit"
+                    android:textColor="@color/text_dark"
+                    android:textSize="14sp"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="8dp" />
+
+                <!-- OR divider -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/divider_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/divider_or"
+                        android:textSize="11sp"
+                        android:textColor="@color/divider_text"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/divider_color" />
+                </LinearLayout>
+
+                <!-- Google login button -->
+                <Button
+                    android:id="@+id/btnGoogleLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@string/action_google_login"
+                    android:background="@drawable/bg_button_google"
+                    android:textColor="@color/text_dark"
+                    android:textSize="14sp"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Progress bar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</FrameLayout>
