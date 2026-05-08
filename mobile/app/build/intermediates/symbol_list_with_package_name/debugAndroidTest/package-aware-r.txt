@@ -1,0 +1,3 @@
+com.dinebook.mobile.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

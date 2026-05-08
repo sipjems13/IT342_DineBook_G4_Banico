@@ -1,0 +1,102 @@
+[
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\drawable_bg_auth_card.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\drawable\\bg_auth_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\drawable_bg_input_dashed.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\drawable\\bg_input_dashed.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\drawable_bg_button_submit.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\drawable\\bg_button_submit.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\layout_activity_register.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.dinebook.mobile.app-merged_res-33:/layout_activity_login.xml.flat",
+        "source": "com.dinebook.mobile.app-main-35:/layout/activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\drawable_bg_input_selector.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\drawable\\bg_input_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\drawable_bg_button_google.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\drawable\\bg_button_google.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\drawable_bg_tab_selector.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\drawable\\bg_tab_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\drawable_bg_input_focused.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\drawable\\bg_input_focused.xml"
+    },
+    {
+        "merged": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-merged_res-33:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Joseph James Banico\\.gradle\\daemon\\8.2\\com.dinebook.mobile.app-main-35:\\layout\\activity_main.xml"
+    }
+]
