@@ -10,6 +10,7 @@
  */
 import AuthPage from './features/auth/AuthPage'
 import DashboardPage from './features/dashboard/DashboardPage'
+import LandingPage from './features/landing/LandingPage'
 
 function App() {
   const path = window.location.pathname
@@ -18,7 +19,11 @@ function App() {
     return <DashboardPage />
   }
 
-  return <AuthPage />
+  if (path === '/auth') {
+    return <AuthPage />
+  }
+
+  return <LandingPage />
 }
 
 export default App

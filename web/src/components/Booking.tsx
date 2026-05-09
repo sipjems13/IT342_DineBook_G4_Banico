@@ -16,7 +16,7 @@ interface Restaurant {
 interface BookingProps {
   restaurant: Restaurant
   onBack: () => void
-  user?: any
+  user?: { id: string } | null
 }
 
 function Booking({ restaurant, onBack, user }: BookingProps) {
@@ -108,9 +108,13 @@ function Booking({ restaurant, onBack, user }: BookingProps) {
       }
 
       setBookingSuccess(true)
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Booking error:', err)
-      setError(err.message || 'Failed to create booking. Please try again.')
+      const message =
+        err && typeof err === 'object' && 'message' in err && typeof (err as { message?: unknown }).message === 'string'
+          ? (err as { message: string }).message
+          : 'Failed to create booking. Please try again.'
+      setError(message)
     } finally {
       setIsSubmitting(false)
     }

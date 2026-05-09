@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './Dashboard.css'
 
 interface DashboardProps {
-  user?: any
+  user?: { email?: string } | null
   onLogout?: () => void
   onRestaurantClick?: (restaurant: Restaurant) => void
 }
