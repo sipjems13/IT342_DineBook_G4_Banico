@@ -67,7 +67,7 @@ function RestaurantBrowse({ restaurants, onRefresh, onRequestCreated, setMessage
       <h4 style={{ marginTop: '1.5rem' }}>Submit Dining Request</h4>
       <div className="request-form-inline">
         <select value={selectedRestaurantId ?? ''} onChange={(e) => setSelectedRestaurantId(e.target.value ? Number(e.target.value) : null)}>
-          <option value="">Select restaurant…</option>
+          <option value="">Select restaurant...</option>
           {restaurants.map((r) => <option key={r.id} value={r.id}>{r.name}</option>)}
         </select>
         <input type="date" value={requestDate} onChange={(e) => setRequestDate(e.target.value)} />

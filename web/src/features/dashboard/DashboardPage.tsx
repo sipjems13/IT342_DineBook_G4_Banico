@@ -10,6 +10,13 @@ import './DashboardPage.css'
 
 type Tab = 'browse' | 'myRequests' | 'manageRestaurants' | 'incomingRequests'
 
+const tabTitles: Record<Tab, string> = {
+  browse: 'Browse restaurants',
+  myRequests: 'My requests',
+  manageRestaurants: 'Manage restaurants',
+  incomingRequests: 'Incoming requests',
+}
+
 function DashboardPage() {
   const [userEmail, setUserEmail] = useState<string | null>(null)
   const [userRole, setUserRole] = useState<UserRole>(null)
@@ -105,9 +112,12 @@ function DashboardPage() {
     <div className="dashboard-container">
       <aside className="dashboard-sidebar">
         <div className="dashboard-header">
-          <h2>DineBook</h2>
+          <div className="dashboard-brand">
+            <span className="dashboard-brand-mark">DB</span>
+            <h2>DineBook</h2>
+          </div>
           <p className="dashboard-user">
-            {userEmail} {userRole && <span className="badge">{userRole}</span>}
+            {userEmail || 'Guest session'} {userRole && <span className="badge">{userRole}</span>}
           </p>
         </div>
         <nav className="dashboard-nav">
@@ -134,12 +144,19 @@ function DashboardPage() {
       </aside>
 
       <main className="dashboard-main">
+        <div className="dashboard-top">
+          <div>
+            <p className="dashboard-kicker">Workspace</p>
+            <h1>{tabTitles[activeTab]}</h1>
+          </div>
+          <a className="home-link" href="/">Home</a>
+        </div>
+
         {message && <div className={`message top ${isError ? 'error' : 'success'}`}>{message}</div>}
 
-        {/* Browse filter bar */}
         {activeTab === 'browse' && (
           <div className="filters">
-            <input placeholder="Search name, cuisine…" value={browseQuery} onChange={(e) => setBrowseQuery(e.target.value)} />
+            <input placeholder="Search name or cuisine" value={browseQuery} onChange={(e) => setBrowseQuery(e.target.value)} />
             <input placeholder="Location" value={browseLocation} onChange={(e) => setBrowseLocation(e.target.value)} />
             <input placeholder="Cuisine" value={browseCuisine} onChange={(e) => setBrowseCuisine(e.target.value)} />
           </div>
