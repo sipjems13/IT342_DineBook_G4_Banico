@@ -42,7 +42,7 @@ function IncomingRequests({ requests, onRefresh, onMyRequestsRefresh, setMessage
               <span className={`status status-${r.status.toLowerCase()}`}>{r.status}</span>
             </h4>
             <p>
-              {new Date(r.requestedDateTime).toLocaleString()} · {r.guests} guest{r.guests > 1 ? 's' : ''} · {r.dinerEmail}
+              {new Date(r.requestedDateTime).toLocaleString()} | {r.guests} guest{r.guests > 1 ? 's' : ''} | {r.dinerEmail}
             </p>
             <div className="actions-row">
               <button type="button" className="small-btn" disabled={r.status === 'APPROVED'}

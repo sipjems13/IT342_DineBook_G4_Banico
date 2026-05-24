@@ -23,7 +23,7 @@ function MyRequests({ requests, onRefresh, setMessage, setIsError }: Props) {
               <span className={`status status-${r.status.toLowerCase()}`}>{r.status}</span>
             </h4>
             <p>
-              {new Date(r.requestedDateTime).toLocaleString()} · {r.guests} guest{r.guests > 1 ? 's' : ''}
+              {new Date(r.requestedDateTime).toLocaleString()} | {r.guests} guest{r.guests > 1 ? 's' : ''}
             </p>
             <p className="muted">Requested at {new Date(r.createdAt).toLocaleString()}</p>
           </div>

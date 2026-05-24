@@ -16,7 +16,7 @@ function AuthPage() {
 
     if (!isSupabaseConfigured) {
       setIsError(true)
-      setMessage('⚠️ Supabase not configured. Please add your credentials to .env.local')
+      setMessage('Supabase is not configured. Please add your credentials to .env.local')
       return
     }
 
@@ -31,7 +31,7 @@ function AuthPage() {
           setIsError(true)
           setMessage(error.message)
         } else {
-          setMessage('Login successful! Redirecting...')
+          setMessage('Login successful. Redirecting...')
           setTimeout(() => { window.location.href = '/dashboard' }, 1000)
         }
       } else {
@@ -52,7 +52,7 @@ function AuthPage() {
           setIsError(true)
           setMessage(error.message)
         } else {
-          setMessage('Registration successful! Redirecting...')
+          setMessage('Registration successful. Redirecting...')
           setTimeout(() => { window.location.href = '/dashboard' }, 1000)
         }
       }
@@ -86,9 +86,17 @@ function AuthPage() {
   return (
     <div className="auth-container">
       <div className="auth-box">
+        <div className="auth-brand">
+          <a className="auth-mark" href="/">DB</a>
+          <div>
+            <h1>{isLogin ? 'Welcome back' : 'Create your account'}</h1>
+            <p>{isLogin ? 'Sign in to manage bookings and requests.' : 'Register to start sending dining requests.'}</p>
+          </div>
+        </div>
+
         <div className="auth-tabs">
           <button className={`tab ${isLogin ? 'active' : ''}`} onClick={() => setIsLogin(true)} type="button" disabled={loading}>
-            Login
+            Sign in
           </button>
           <button className={`tab ${!isLogin ? 'active' : ''}`} onClick={() => setIsLogin(false)} type="button" disabled={loading}>
             Register
@@ -99,31 +107,31 @@ function AuthPage() {
 
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
-            <label htmlFor="email">EMAIL ADDRESS</label>
+            <label htmlFor="email">Email address</label>
             <input type="email" id="email" placeholder="user@example.com" value={email}
               onChange={(e) => setEmail(e.target.value)} required disabled={loading} />
           </div>
           <div className="form-group">
-            <label htmlFor="password">PASSWORD</label>
-            <input type="password" id="password" placeholder="••••••••" value={password}
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" value={password}
               onChange={(e) => setPassword(e.target.value)} required disabled={loading} />
           </div>
           {!isLogin && (
             <div className="form-group">
-              <label htmlFor="confirmPassword">CONFIRM PASSWORD</label>
-              <input type="password" id="confirmPassword" placeholder="••••••••" value={confirmPassword}
+              <label htmlFor="confirmPassword">Confirm password</label>
+              <input type="password" id="confirmPassword" placeholder="Confirm your password" value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)} required disabled={loading} />
             </div>
           )}
           <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? 'Processing...' : isLogin ? 'Login' : 'Register'}
+            {loading ? 'Processing...' : isLogin ? 'Sign in' : 'Create account'}
           </button>
-          <div className="divider"><span>OR</span></div>
+          <div className="divider"><span>or</span></div>
           <button type="button" className="google-btn" disabled={loading} onClick={handleGoogleLogin}>
-            Login with Google
+            Continue with Google
           </button>
         </form>
-        <div className="back-link"><a href="/">← Back to Home</a></div>
+        <div className="back-link"><a href="/">Back to home</a></div>
       </div>
     </div>
   )
