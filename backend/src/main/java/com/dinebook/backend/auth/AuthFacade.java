@@ -59,6 +59,12 @@ public class AuthFacade {
 
     public ResponseEntity<?> login(LoginRequest request) {
         // Adapter Pattern: abstracting specific provider for login
-        return authClient.authenticateUser(request);
+        ResponseEntity<?> response = authClient.authenticateUser(request);
+
+        if (response.getStatusCode().is2xxSuccessful()) {
+            userRoleService.ensureUser(request.email());
+        }
+
+        return response;
     }
 }
