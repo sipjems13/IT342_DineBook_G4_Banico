@@ -6,6 +6,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
 @ComponentScan(
@@ -42,9 +45,25 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 		"com.dinebook.backend.restaurant",
 		"com.dinebook.backend.booking"
 })
+
 public class BackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendApplication.class, args);
+	}
+
+	@Bean
+	public CommandLineRunner updateDatabaseSchema(JdbcTemplate jdbcTemplate) {
+		return args -> {
+			try {
+				// Drop the existing check constraint if it exists
+				jdbcTemplate.execute("ALTER TABLE app_users DROP CONSTRAINT IF EXISTS app_users_role_check");
+				// Recreate the check constraint with ADMIN role included
+				jdbcTemplate.execute("ALTER TABLE app_users ADD CONSTRAINT app_users_role_check CHECK (role IN ('DINER', 'STAFF', 'ADMIN'))");
+				System.out.println("Successfully updated app_users_role_check constraint to include ADMIN.");
+			} catch (Exception e) {
+				System.err.println("Failed to update database schema constraint: " + e.getMessage());
+			}
+		};
 	}
 }

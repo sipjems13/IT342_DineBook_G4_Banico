@@ -12,7 +12,7 @@
     <color name="tab_divider">#DDDDDD</color>
 
     <!-- Form colors -->
-    <color name="label_text">#888888</color>
+    <color name="label_text">#6B7280</color>
     <color name="input_border_dashed">#AAAAAA</color>
     <color name="input_border_focused">#666666</color>
     <color name="input_disabled_bg">#F5F5F5</color>
@@ -42,6 +42,14 @@
     <color name="link_text">#999999</color>
 
     <!-- General -->
-    <color name="text_dark">#333333</color>
+    <color name="text_dark">#111827</color>
     <color name="text_hint">#AAAAAA</color>
+    <color name="dashboard_bg">#F4F1EB</color>
+    <color name="sidebar_dark">#12151C</color>
+    <color name="sidebar_muted">#A7AFBC</color>
+    <color name="sidebar_nav_text">#E5E7EB</color>
+    <color name="card_soft_border">#E5E7EB</color>
+    <color name="accent_text">#9A5B19</color>
+    <color name="button_primary_text">#FFFAF0</color>
+    <color name="brand_mark_text">#201303</color>
 </resources>

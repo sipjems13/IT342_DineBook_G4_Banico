@@ -1,6 +1,7 @@
 package com.dinebook.mobile.auth
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,7 +9,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -22,6 +22,8 @@ class RegisterActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "RegisterActivity"
+        private const val SUPABASE_URL = "https://zruzhkwunykhyhuyytei.supabase.co"
+        private const val MOBILE_REDIRECT = "dinebook://auth-callback"
     }
 
     private lateinit var etName: EditText
@@ -59,7 +61,9 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister.setOnClickListener { performRegistration() }
 
         btnGoogleLogin.setOnClickListener {
-            Toast.makeText(this, "Google Login coming soon", Toast.LENGTH_SHORT).show()
+            val redirect = Uri.encode(MOBILE_REDIRECT)
+            val url = "$SUPABASE_URL/auth/v1/authorize?provider=google&redirect_to=$redirect"
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
         }
     }
 

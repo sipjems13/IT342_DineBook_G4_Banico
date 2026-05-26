@@ -2,6 +2,7 @@ package com.dinebook.backend.restaurant;
 
 import com.dinebook.backend.restaurant.dto.RestaurantDto;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,5 +25,10 @@ public class RestaurantController {
             @RequestParam(required = false, name = "q") String query
     ) {
         return restaurantService.browse(location, cuisine, query);
+    }
+
+    @GetMapping("/{id}")
+    public RestaurantDto getRestaurant(@PathVariable Long id) {
+        return restaurantService.toDto(restaurantService.findById(id));
     }
 }

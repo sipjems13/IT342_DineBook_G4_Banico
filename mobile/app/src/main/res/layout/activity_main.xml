@@ -1,58 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background_gray"
-    android:padding="20dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_height="match_parent"
+        android:background="@color/dashboard_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_dashboard_header"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/btnMenu"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_secondary_dark_action"
+                android:text="☰"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/bg_brand_mark"
+                android:gravity="center"
+                android:text="DB"
+                android:textColor="@color/brand_mark_text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DineBook"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvUserEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/sidebar_muted"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Workspace"
+                    android:textColor="@color/accent_text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPageTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/text_dark"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvPageHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/label_text"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btnRefresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_primary_action"
+                    android:textAllCaps="false"
+                    android:textColor="@color/button_primary_text"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:id="@+id/restaurantList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_mobile_panel"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/requestList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_mobile_panel"
+                    android:orientation="vertical"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/drawerOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66000000"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/drawerPanel"
+        android:layout_width="284dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dashboard_header"
         android:orientation="vertical"
-        android:background="@drawable/bg_auth_card"
-        android:elevation="10dp"
-        android:padding="32dp">
+        android:padding="18dp"
+        android:visibility="gone">
 
-        <!-- Welcome title -->
-        <TextView
-            android:id="@+id/tvWelcomeInfo"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/welcome_message"
-            android:textSize="22sp"
-            android:textColor="@color/text_dark"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="8dp" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <!-- User email -->
-        <TextView
-            android:id="@+id/tvUserEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@color/label_text"
-            android:gravity="center"
-            android:layout_marginBottom="32dp" />
+            <TextView
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="@drawable/bg_brand_mark"
+                android:gravity="center"
+                android:text="DB"
+                android:textColor="@color/brand_mark_text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-        <!-- Divider -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_weight="1"
+                android:text="DineBook"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnCloseDrawer"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="@drawable/bg_secondary_dark_action"
+                android:text="×"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="22sp" />
+        </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/divider_color"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="16dp"
+            android:background="#24FFFFFF" />
 
-        <!-- Logout button -->
+        <TextView
+            android:id="@+id/btnBrowseNav"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_nav_item_selector"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="Browse Restaurants"
+            android:textColor="@color/sidebar_nav_text"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnRequestsNav"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_nav_item_selector"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="My Requests"
+            android:textColor="@color/sidebar_nav_text"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <Button
             android:id="@+id/btnLogout"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:background="@drawable/bg_logout_action"
             android:text="Logout"
-            android:background="@drawable/bg_button_submit"
-            android:textColor="@color/text_dark"
-            android:textSize="14sp"
-            android:textAllCaps="false" />
-
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
     </LinearLayout>
 </FrameLayout>

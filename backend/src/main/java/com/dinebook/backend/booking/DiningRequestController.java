@@ -26,6 +26,7 @@ public class DiningRequestController {
 
     @PostMapping
     public DiningRequestDto createRequest(@Valid @RequestBody CreateDiningRequest request, Authentication authentication) {
+        currentUserService.requireDiner(authentication);
         String email = currentUserService.requireEmail(authentication);
         return diningRequestService.create(email, request);
     }

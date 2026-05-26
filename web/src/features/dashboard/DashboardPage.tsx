@@ -137,6 +137,25 @@ function DashboardPage() {
               </button>
             </>
           )}
+          {userRole === 'ADMIN' && (
+            <a
+              href="/admin"
+              style={{
+                display: 'block',
+                padding: '10px 16px',
+                borderRadius: '8px',
+                background: 'rgba(124,106,247,0.15)',
+                color: '#a78bfa',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '14px',
+                marginTop: '4px',
+                border: '1px solid rgba(124,106,247,0.25)',
+              }}
+            >
+              🛡 Admin Panel
+            </a>
+          )}
         </nav>
         <button className="logout-btn" type="button" onClick={async () => { await supabase.auth.signOut(); window.location.href = '/' }}>
           Logout
@@ -165,8 +184,8 @@ function DashboardPage() {
         {activeTab === 'browse' && (
           <RestaurantBrowse
             restaurants={restaurants}
+            userRole={userRole}
             onRefresh={loadRestaurants}
-            onRequestCreated={loadMyRequests}
             setMessage={setMessage}
             setIsError={setIsError}
           />

@@ -1,14 +1,15 @@
 package com.dinebook.mobile.auth
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -18,11 +19,14 @@ import com.dinebook.mobile.shared.ApiClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "LoginActivity"
+        private const val SUPABASE_URL = "https://zruzhkwunykhyhuyytei.supabase.co"
+        private const val MOBILE_REDIRECT = "dinebook://auth-callback"
     }
 
     private lateinit var etEmail: EditText
@@ -56,8 +60,15 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener { performLogin() }
 
         btnGoogleLogin.setOnClickListener {
-            Toast.makeText(this, "Google Login coming soon", Toast.LENGTH_SHORT).show()
+            startGoogleLogin()
         }
+
+        handleOAuthCallback(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        handleOAuthCallback(intent)
     }
 
     private fun performLogin() {
@@ -92,6 +103,7 @@ class LoginActivity : AppCompatActivity() {
                     kotlinx.coroutines.delay(1500)
                     val intent = Intent(this@LoginActivity, MainActivity::class.java).apply {
                         putExtra("USER_EMAIL", authResponse?.email ?: email)
+                        putExtra("ACCESS_TOKEN", authResponse?.accessToken)
                         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     }
                     startActivity(intent)
@@ -132,5 +144,52 @@ class LoginActivity : AppCompatActivity() {
         etPassword.isEnabled = !isLoading
         tabRegister.isEnabled = !isLoading
         btnLogin.text = if (isLoading) getString(R.string.action_processing) else getString(R.string.action_login)
+    }
+
+    private fun startGoogleLogin() {
+        val redirect = Uri.encode(MOBILE_REDIRECT)
+        val url = "$SUPABASE_URL/auth/v1/authorize?provider=google&redirect_to=$redirect"
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+    }
+
+    private fun handleOAuthCallback(intent: Intent?) {
+        val uri = intent?.data ?: return
+        if (uri.scheme != "dinebook" || uri.host != "auth-callback") return
+
+        val values = parseCallbackValues(uri)
+        val token = values["access_token"]
+        if (token.isNullOrBlank()) {
+            showMessage("Google Login failed. Please try again.", isError = true)
+            return
+        }
+
+        val email = emailFromJwt(token) ?: "Google account"
+        val mainIntent = Intent(this, MainActivity::class.java).apply {
+            putExtra("USER_EMAIL", email)
+            putExtra("ACCESS_TOKEN", token)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        startActivity(mainIntent)
+        finish()
+    }
+
+    private fun parseCallbackValues(uri: Uri): Map<String, String> {
+        val raw = uri.fragment ?: uri.query ?: return emptyMap()
+        return raw.split("&")
+            .mapNotNull {
+                val parts = it.split("=", limit = 2)
+                if (parts.size == 2) parts[0] to Uri.decode(parts[1]) else null
+            }
+            .toMap()
+    }
+
+    private fun emailFromJwt(token: String): String? {
+        return try {
+            val payload = token.split(".").getOrNull(1) ?: return null
+            val decoded = String(Base64.decode(payload, Base64.URL_SAFE or Base64.NO_WRAP or Base64.NO_PADDING))
+            JSONObject(decoded).optString("email").takeIf { it.isNotBlank() }
+        } catch (_: Exception) {
+            null
+        }
     }
 }

@@ -1,0 +1,624 @@
+/* ── Admin Page — Premium Dark Theme ─────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --admin-bg: #0a0a0f;
+  --admin-surface: #111118;
+  --admin-surface-2: #1a1a24;
+  --admin-border: rgba(255, 255, 255, 0.07);
+  --admin-accent: #7c6af7;
+  --admin-accent-2: #5a4fcf;
+  --admin-approved: #22c55e;
+  --admin-pending: #f59e0b;
+  --admin-rejected: #ef4444;
+  --admin-text: #f1f1f5;
+  --admin-muted: #8b8ba7;
+  --admin-sidebar-w: 260px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.admin-page {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  background: var(--admin-bg);
+  color: var(--admin-text);
+}
+
+/* ── Sidebar ──────────────────────────────────────────────────────────────── */
+.admin-sidebar {
+  width: var(--admin-sidebar-w);
+  min-width: var(--admin-sidebar-w);
+  background: var(--admin-surface);
+  border-right: 1px solid var(--admin-border);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.admin-sidebar-header {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.admin-brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--admin-accent), var(--admin-accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.admin-brand h2 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--admin-text);
+}
+
+.admin-brand-sub {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--admin-accent);
+  background: rgba(124, 106, 247, 0.12);
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.admin-user-info {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--admin-muted);
+  word-break: break-all;
+}
+
+.admin-nav {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+}
+
+.admin-nav-section {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--admin-muted);
+  padding: 10px 12px 6px;
+}
+
+.admin-nav-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--admin-muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.admin-nav-btn:hover {
+  background: rgba(124, 106, 247, 0.08);
+  color: var(--admin-text);
+}
+
+.admin-nav-btn.active {
+  background: rgba(124, 106, 247, 0.15);
+  color: var(--admin-accent);
+}
+
+.admin-nav-btn .nav-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.admin-badge-count {
+  margin-left: auto;
+  background: var(--admin-accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  min-width: 22px;
+  text-align: center;
+}
+
+.admin-sidebar-footer {
+  padding: 16px 12px;
+  border-top: 1px solid var(--admin-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-back-link,
+.admin-logout-btn {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.admin-back-link {
+  color: var(--admin-muted);
+  background: none;
+}
+
+.admin-back-link:hover {
+  background: rgba(255,255,255,0.04);
+  color: var(--admin-text);
+}
+
+.admin-logout-btn {
+  color: var(--admin-rejected);
+  background: rgba(239,68,68,0.08);
+}
+
+.admin-logout-btn:hover {
+  background: rgba(239,68,68,0.15);
+}
+
+/* ── Main content ─────────────────────────────────────────────────────────── */
+.admin-main {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-topbar {
+  padding: 28px 36px 20px;
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--admin-surface);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.admin-topbar-left h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--admin-text);
+}
+
+.admin-topbar-left p {
+  font-size: 13px;
+  color: var(--admin-muted);
+  margin-top: 2px;
+}
+
+.admin-refresh-btn {
+  background: rgba(124,106,247,0.12);
+  border: 1px solid rgba(124,106,247,0.25);
+  color: var(--admin-accent);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.admin-refresh-btn:hover {
+  background: rgba(124,106,247,0.2);
+}
+
+/* ── Body ─────────────────────────────────────────────────────────────────── */
+.admin-body {
+  padding: 28px 36px;
+  flex: 1;
+}
+
+/* ── Filter bar ───────────────────────────────────────────────────────────── */
+.admin-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.admin-filter-btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--admin-border);
+  background: var(--admin-surface-2);
+  color: var(--admin-muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.admin-filter-btn:hover { color: var(--admin-text); }
+
+.admin-filter-btn.active {
+  background: rgba(124,106,247,0.15);
+  border-color: rgba(124,106,247,0.35);
+  color: var(--admin-accent);
+}
+
+/* ── Table ────────────────────────────────────────────────────────────────── */
+.admin-table-wrapper {
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--admin-surface);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.admin-table thead tr {
+  background: var(--admin-surface-2);
+}
+
+.admin-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--admin-muted);
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.admin-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--admin-border);
+  color: var(--admin-text);
+  vertical-align: middle;
+}
+
+.admin-table tr:last-child td { border-bottom: none; }
+
+.admin-table tbody tr {
+  transition: background 0.1s;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+/* ── Status badges ────────────────────────────────────────────────────────── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.status-badge.pending  { background: rgba(245,158,11,0.15); color: var(--admin-pending); }
+.status-badge.approved { background: rgba(34,197,94,0.15);  color: var(--admin-approved); }
+.status-badge.rejected { background: rgba(239,68,68,0.15);  color: var(--admin-rejected); }
+.status-badge.diner    { background: rgba(99,102,241,0.12); color: #a5b4fc; }
+.status-badge.staff    { background: rgba(34,211,238,0.12); color: #67e8f9; }
+.status-badge.admin    { background: rgba(124,106,247,0.2); color: var(--admin-accent); }
+
+/* ── Action buttons ───────────────────────────────────────────────────────── */
+.action-btn {
+  padding: 5px 13px;
+  border-radius: 6px;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-right: 6px;
+}
+
+.action-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+.action-btn.approve {
+  background: rgba(34,197,94,0.15);
+  color: var(--admin-approved);
+  border: 1px solid rgba(34,197,94,0.25);
+}
+
+.action-btn.approve:not(:disabled):hover {
+  background: rgba(34,197,94,0.25);
+}
+
+.action-btn.reject {
+  background: rgba(239,68,68,0.12);
+  color: var(--admin-rejected);
+  border: 1px solid rgba(239,68,68,0.22);
+}
+
+.action-btn.reject:not(:disabled):hover {
+  background: rgba(239,68,68,0.22);
+}
+
+.role-select {
+  background: var(--admin-surface-2);
+  border: 1px solid var(--admin-border);
+  color: var(--admin-text);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.role-select:focus {
+  outline: none;
+  border-color: var(--admin-accent);
+}
+
+/* ── Empty / loading ──────────────────────────────────────────────────────── */
+.admin-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--admin-muted);
+  font-size: 14px;
+}
+
+/* ── Notification toast ───────────────────────────────────────────────────── */
+.admin-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  animation: slideUp 0.25s ease;
+  z-index: 100;
+  max-width: 320px;
+}
+
+.admin-toast.success { background: rgba(34,197,94,0.18); color: var(--admin-approved); border: 1px solid rgba(34,197,94,0.3); }
+.admin-toast.error   { background: rgba(239,68,68,0.15);  color: var(--admin-rejected); border: 1px solid rgba(239,68,68,0.3); }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Create User Button ── */
+.admin-create-btn {
+  background: linear-gradient(135deg, var(--admin-accent), var(--admin-accent-2));
+  border: none;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(124, 106, 247, 0.25);
+}
+
+.admin-create-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(124, 106, 247, 0.4);
+}
+
+.admin-create-btn:active {
+  transform: translateY(0);
+}
+
+/* ── Action Delete Button ── */
+.action-btn.delete {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--admin-rejected);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.action-btn.delete:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.35);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.15);
+}
+
+/* ── Modal Overlay ── */
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 5, 8, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* ── Modal Container ── */
+.admin-modal {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 440px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.admin-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.admin-modal-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--admin-text);
+  letter-spacing: -0.3px;
+}
+
+.admin-modal-close {
+  background: none;
+  border: none;
+  color: var(--admin-muted);
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.15s;
+  padding: 4px;
+}
+
+.admin-modal-close:hover {
+  color: var(--admin-text);
+}
+
+/* ── Form Groups ── */
+.admin-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--admin-muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select {
+  background: var(--admin-surface-2);
+  border: 1px solid var(--admin-border);
+  color: var(--admin-text);
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--admin-accent);
+  box-shadow: 0 0 0 3px rgba(124, 106, 247, 0.15);
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Modal Actions ── */
+.admin-modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.modal-btn.cancel {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--admin-muted);
+  border: 1px solid var(--admin-border);
+}
+
+.modal-btn.cancel:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--admin-text);
+}
+
+.modal-btn.submit {
+  background: linear-gradient(135deg, var(--admin-accent), var(--admin-accent-2));
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(124, 106, 247, 0.2);
+}
+
+.modal-btn.submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(124, 106, 247, 0.35);
+}
+
+.modal-btn.submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.modal-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

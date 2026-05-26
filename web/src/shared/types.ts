@@ -1,4 +1,4 @@
-export type UserRole = 'DINER' | 'STAFF' | null
+export type UserRole = 'DINER' | 'STAFF' | 'ADMIN' | null
 
 export type Restaurant = {
   id: number

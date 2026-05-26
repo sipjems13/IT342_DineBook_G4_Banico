@@ -45,4 +45,19 @@ public class CurrentUserService {
             throw new ResponseStatusException(FORBIDDEN, "Staff role required");
         }
     }
+
+    public void requireDiner(Authentication authentication) {
+        UserRole role = requireRole(authentication);
+        if (role != UserRole.DINER) {
+            throw new ResponseStatusException(FORBIDDEN, "Diner role required");
+        }
+    }
+
+    public void requireAdmin(Authentication authentication) {
+        UserRole role = requireRole(authentication);
+        if (role != UserRole.ADMIN) {
+            throw new ResponseStatusException(FORBIDDEN, "Admin role required");
+        }
+    }
 }
+

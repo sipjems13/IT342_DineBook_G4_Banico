@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface DiningRequestRepository extends JpaRepository<DiningRequest, Long> {
     List<DiningRequest> findByDinerEmailIgnoreCaseOrderByCreatedAtDesc(String dinerEmail);
+    List<DiningRequest> findAllByOrderByCreatedAtDesc();
 }
